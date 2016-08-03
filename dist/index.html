@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <script src="/horizon/horizon.js"></script>
+    <script>
+      var horizon = Horizon();
+      horizon.onReady(function() {
+        const chat = horizon("messages"); // create or use the table 'messages'
+
+        // Defined the object we want to store
+        // this could be anything
+        //
+        // String, number, boolean, date
+        //
+        // and objects... but they must use only the 4 types above
+
+
+        function createMessage(author, text) {
+          let message = {
+            text: text,
+            datetime: new Date(),
+            author: author,
+            favoriteBooks: [{
+              title: 'Bible',
+              author: 'God?'
+            }, {
+              title: 'The Hobbit',
+              author: 'JRR Tolkien'
+            }]
+          };
+
+          chat.store(message);
+        }
+
+        document.querySelector('#create').addEventListener('click', function() {
+          createMessage(document.querySelector('#chat-author').value, document.querySelector('#chat-text').value);
+        });
+
+        chat.watch().subscribe((items) => {
+
+          document.querySelector('#list');
+
+          // Clear the list
+          while (list.firstChild) {
+            list.removeChild(list.firstChild);
+          }
+
+          items.forEach((item) => {
+            // Each result from the chat collection
+            //  will pass through this function
+            var listItem = document.createElement('div');
+            var listItemText = document.createTextNode(item.author + ': ' + item.text);
+            listItem.appendChild(listItemText);
+            list.appendChild(listItem);
+            console.log(item);
+
+          })
+
+        },
+          // If an error occurs, this function
+          //  will execute with the `err` message
+        (err) => {
+          console.log(err);
+        })
+
+      });
+      horizon.connect();
+    </script>
+  </head>
+  <body>
+     <div id="root">
+       <div id="list">
+       </div>
+     </div>
+     <input type="text" name="author" id="chat-author" value="Jim" />
+     <input type="text" name="text" id="chat-text" />
+     <input type="button" value="Create message" id="create" />
+  </body>
+</html>
