@@ -17,7 +17,7 @@
 
 
         function createMessage(author, text) {
-          let message = {
+          var message = {
             text: text,
             datetime: new Date(),
             author: author,
@@ -37,7 +37,7 @@
           createMessage(document.querySelector('#chat-author').value, document.querySelector('#chat-text').value);
         });
 
-        chat.watch().subscribe((items) => {
+        chat.watch().subscribe(function(items) {
 
           document.querySelector('#list');
 
@@ -46,7 +46,7 @@
             list.removeChild(list.firstChild);
           }
 
-          items.forEach((item) => {
+          items.forEach(function(item) {
             // Each result from the chat collection
             //  will pass through this function
             var listItem = document.createElement('div');
@@ -60,7 +60,7 @@
         },
           // If an error occurs, this function
           //  will execute with the `err` message
-        (err) => {
+        function(err) {
           console.log(err);
         })
 
