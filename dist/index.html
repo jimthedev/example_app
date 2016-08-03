@@ -37,7 +37,7 @@
           createMessage(document.querySelector('#chat-author').value, document.querySelector('#chat-text').value);
         });
 
-        chat.watch().subscribe(function(items) {
+        chat.order('datetime', 'descending').watch().subscribe(function(items) {
 
           document.querySelector('#list');
 

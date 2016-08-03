@@ -29,3 +29,4 @@
 2016-08-03T10:09:23.240822000 1104.047356s info: Table fc037f1f-3535-4c30-b823-0d3dd35e4f05: Starting a new Raft election for term 1.
 2016-08-03T10:09:23.241233000 1104.047767s info: Table fc037f1f-3535-4c30-b823-0d3dd35e4f05: Added replica on this server.
 2016-08-03T10:09:23.262597000 1104.069131s info: Table fc037f1f-3535-4c30-b823-0d3dd35e4f05: This server is Raft leader for term 1. Latest log index is 0.
+2016-08-03T12:26:36.425878000 9338.645332s info: Table fc037f1f-3535-4c30-b823-0d3dd35e4f05: Configuration is changing.
